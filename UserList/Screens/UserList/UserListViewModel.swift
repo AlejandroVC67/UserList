@@ -20,21 +20,21 @@ final class UserListViewModel: NSObject {
 
     private var cachedUsers: [UserModel] = [] {
         didSet {
-            temporalUsers = cachedUsers
+            displayedUsers = cachedUsers
         }
     }
-    private var temporalUsers: [UserModel] = []
+    private var displayedUsers: [UserModel] = []
     private let serviceHandler: ServiceProtocol = ServiceFacade()
     weak var delegate: UserListDelegate?
     
     func filterUser(by string: String) {
 //        let predicate = NSPredicate(format: "name = %@", string)
         if string.isEmpty {
-            temporalUsers = cachedUsers
+            displayedUsers = cachedUsers
             delegate?.reload()
             return
         }
-        temporalUsers = cachedUsers.filter({ $0.name.contains(string) })
+        displayedUsers = cachedUsers.filter({ $0.name.contains(string) })
 //        let nsUsers = users as? NSArray
 //        self.users = nsUsers?.filtered(using: predicate) as? [UserModel] ?? []
         delegate?.reload()
@@ -56,13 +56,13 @@ final class UserListViewModel: NSObject {
     }
     
     private func getUser(pos: Int) -> UserModel {
-        return temporalUsers[pos]
+        return displayedUsers[pos]
     }
 }
 
 extension UserListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return temporalUsers.count
+        return displayedUsers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
