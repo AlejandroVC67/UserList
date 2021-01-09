@@ -10,7 +10,10 @@ import UIKit
 
 
 protocol UserListDelegate where Self: UIViewController {
+    func startActivityIndicator()
+    func stopActivityIndicator()
     func reload()
+    
 }
 
 final class UserListViewModel: NSObject {
@@ -40,7 +43,7 @@ final class UserListViewModel: NSObject {
     func fetchUsers() {
         serviceHandler.getUsers { [weak self] (result) in
             guard let self = self else { return }
-            
+            self.delegate?.startActivityIndicator()
             switch result {
             case .success(let users):
                 self.cachedUsers = users
@@ -48,6 +51,7 @@ final class UserListViewModel: NSObject {
             case .failure(let error): print("error")
                 
             }
+            self.delegate?.stopActivityIndicator()
         }
     }
     

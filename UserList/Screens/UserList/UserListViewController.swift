@@ -27,6 +27,14 @@ class UserListViewController: UIViewController {
         }
     }
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.style = .large
+        indicator.color = .blue
+        return indicator
+    }()
+    
     private lazy var tableView: UITableView = {
         let view = UITableView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,9 +89,30 @@ extension UserListViewController: UISearchBarDelegate {
 
 
 extension UserListViewController: UserListDelegate {
+    func startActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.view.addSubview(self.activityIndicator)
+            
+            self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+            self.activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    func stopActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.removeFromSuperview()
+        }
+    }
+    
     func reload() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+            
         }
     }
 }

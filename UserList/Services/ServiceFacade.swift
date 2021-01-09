@@ -8,7 +8,7 @@
 import Foundation
 
 final class ServiceFacade: ServiceProtocol {
-    private enum Constsnts {
+    private enum Constants {
         static let url = "https://jsonplaceholder.typicode.com"
     }
     
@@ -18,7 +18,7 @@ final class ServiceFacade: ServiceProtocol {
     }
   
     func getUsers(completion: @escaping UsersServiceResponse) {
-        guard let url  = URL(string: Constsnts.url + "/users") else {
+        guard let url  = URL(string: Constants.url + "/users") else {
             completion(.failure(.badUrl))
             return
         }
