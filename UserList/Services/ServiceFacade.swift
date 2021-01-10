@@ -28,7 +28,7 @@ final class ServiceFacade: ServiceProtocol {
         // First we try to get users from cache
         let cachedUsers = CacheManager.retrieve(from: context)
         if !cachedUsers.isEmpty {
-            let result = prepareData(users: cachedUsers)
+            let result = cachedUsers.transform()
             completion(.success(result))
             return
         }
@@ -51,7 +51,7 @@ final class ServiceFacade: ServiceProtocol {
                 let users = try JSONDecoder().decode([UserModel].self, from: data)
                 CacheManager.save(users: users, context: context)
                 let cachedUsers = CacheManager.retrieve(from: context)
-                let result = self?.prepareData(users: cachedUsers) ?? []
+                let result = cachedUsers.transform()
                 completion(.success(result))
             } catch {
                 print(error)
@@ -87,16 +87,5 @@ final class ServiceFacade: ServiceProtocol {
             }
         }
         task.resume()
-    }
-    
-    private func prepareData(users: [User]) -> [UserModel] {
-        let result = users.map { (person) -> UserModel in
-            return UserModel(id: person.id,
-                             name: person.name,
-                             username: person.username,
-                             email: person.email,
-                             phone: person.phone)
-        }
-        return result
     }
 }

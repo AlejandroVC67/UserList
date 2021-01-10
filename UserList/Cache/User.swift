@@ -19,3 +19,15 @@ class User: NSManagedObject {
         super.init(entity: entity, insertInto: context)
     }
 }
+
+extension Array where Element : User {
+    func transform() -> [UserModel] {
+        return self.map { (person) -> UserModel in
+            return UserModel(id: person.id,
+                             name: person.name,
+                             username: person.username,
+                             email: person.email,
+                             phone: person.phone)
+        }
+    }
+}

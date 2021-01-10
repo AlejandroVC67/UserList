@@ -55,8 +55,8 @@ final class CacheManager {
         return cachedUsers
     }
     
-    static func retrieveBasedOn(predicate: NSPredicate) -> [User] {
-        var filteredUsers: [User] = []
+    static func retrieveBasedOn(predicate: NSPredicate) -> [UserModel] {
+        var filteredUsers: [UserModel] = []
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         guard let context = appDelegate?.persistentContainer.viewContext else { return filteredUsers }
@@ -65,7 +65,8 @@ final class CacheManager {
         request.predicate = predicate
         
         do {
-            filteredUsers = try context.fetch(request) as? [User] ?? []
+            let cachedUsers = try context.fetch(request) as? [User] ?? []
+            filteredUsers = cachedUsers.transform()
         } catch {
             print("Error saving users", error.localizedDescription)
         }
