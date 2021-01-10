@@ -94,7 +94,7 @@ class UserTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setupView(with user: UserModel) {
+    func setupView(with user: User) {
         // Set labels
         nameLabel.text = user.name
         phoneLabel.text = user.phone

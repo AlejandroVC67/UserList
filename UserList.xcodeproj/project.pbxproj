@@ -22,6 +22,8 @@
 		16C4F15625AA07F500ECBF44 /* ServiceFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F15525AA07F500ECBF44 /* ServiceFacade.swift */; };
 		16C4F16A25AA13D300ECBF44 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F16925AA13D300ECBF44 /* UserListViewModel.swift */; };
 		16C4F17225AA16D700ECBF44 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F17125AA16D700ECBF44 /* UserTableViewCell.swift */; };
+		16C84B4F25AA720700A60CD0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C84B4E25AA720700A60CD0 /* User.swift */; };
+		16C84B5725AA749E00A60CD0 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C84B5625AA749E00A60CD0 /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		16C4F15525AA07F500ECBF44 /* ServiceFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFacade.swift; sourceTree = "<group>"; };
 		16C4F16925AA13D300ECBF44 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		16C4F17125AA16D700ECBF44 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		16C84B4E25AA720700A60CD0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		16C84B5625AA749E00A60CD0 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		16C4F10425AA072100ECBF44 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				16C84B4D25AA71FB00A60CD0 /* Cache */,
 				16C4F15A25AA088D00ECBF44 /* Screens */,
 				16C4F14725AA07A800ECBF44 /* Services */,
 				16C4F13C25AA075A00ECBF44 /* Models */,
@@ -187,6 +192,15 @@
 				16C4F17125AA16D700ECBF44 /* UserTableViewCell.swift */,
 			);
 			path = UserList;
+			sourceTree = "<group>";
+		};
+		16C84B4D25AA71FB00A60CD0 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				16C84B4E25AA720700A60CD0 /* User.swift */,
+				16C84B5625AA749E00A60CD0 /* CacheManager.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C84B5725AA749E00A60CD0 /* CacheManager.swift in Sources */,
 				16C4F11025AA072100ECBF44 /* UserList.xcdatamodeld in Sources */,
 				16C4F14325AA077E00ECBF44 /* PostModel.swift in Sources */,
 				16C4F17225AA16D700ECBF44 /* UserTableViewCell.swift in Sources */,
@@ -326,6 +341,7 @@
 				16C4F15625AA07F500ECBF44 /* ServiceFacade.swift in Sources */,
 				16C4F10625AA072100ECBF44 /* AppDelegate.swift in Sources */,
 				16C4F13E25AA076700ECBF44 /* UserModel.swift in Sources */,
+				16C84B4F25AA720700A60CD0 /* User.swift in Sources */,
 				16C4F14925AA07BB00ECBF44 /* ServiceError.swift in Sources */,
 				16C4F10825AA072100ECBF44 /* SceneDelegate.swift in Sources */,
 				16C4F16A25AA13D300ECBF44 /* UserListViewModel.swift in Sources */,

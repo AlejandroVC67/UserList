@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class ServiceFacade: ServiceProtocol {
     private enum Constants {
@@ -22,6 +23,8 @@ final class ServiceFacade: ServiceProtocol {
             completion(.failure(.badUrl))
             return
         }
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate?.persistentContainer.viewContext
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get
@@ -33,9 +36,9 @@ final class ServiceFacade: ServiceProtocol {
             }
             do {
                 let users = try JSONDecoder().decode([UserModel].self, from: data)
-                // Save in coredata
-                // Retrieve from coredata
-                completion(.success(users))
+                CacheManager.save(users: users, context: context)
+                let cachedUsers = CacheManager.retrieve(from: context)
+                completion(.success(cachedUsers))
             } catch {
                 print(error)
                 completion(.failure(.unableToParse))

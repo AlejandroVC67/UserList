@@ -18,12 +18,12 @@ protocol UserListDelegate where Self: UIViewController {
 
 final class UserListViewModel: NSObject {
 
-    private var cachedUsers: [UserModel] = [] {
+    private var cachedUsers: [User] = [] {
         didSet {
             displayedUsers = cachedUsers
         }
     }
-    private var displayedUsers: [UserModel] = []
+    private var displayedUsers: [User] = []
     private let serviceHandler: ServiceProtocol = ServiceFacade()
     weak var delegate: UserListDelegate?
     
@@ -55,7 +55,7 @@ final class UserListViewModel: NSObject {
         }
     }
     
-    private func getUser(pos: Int) -> UserModel {
+    private func getUser(pos: Int) -> User {
         return displayedUsers[pos]
     }
 }
