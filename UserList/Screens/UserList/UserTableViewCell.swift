@@ -136,35 +136,56 @@ final class UserTableViewCell: UITableViewCell {
         addSubview(emailLabel)
         addSubview(publicationsButton)
         
+        setupProfileImageViewConstraints()
+        setupNameLabelConstraints()
+        setupPhoneIconConstraints()
+        setupPhoneLabelConstraints()
+        setupEmailIconConstraints()
+        setupEmailLabelConstraints()
+        setupPublicationsButtonConstraints()
+    }
+    
+    private func setupProfileImageViewConstraints() {
         profileImageView.widthAnchor.constraint(equalToConstant: Constants.ProfileImage.dimensions).isActive = true
         profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.ProfileImage.padding.top).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.ProfileImage.padding.bottom).isActive = true
-        
         profileImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.PhoneIcon.padding.left).isActive = true
-        
+    }
+    
+    private func setupNameLabelConstraints() {
         nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.NameLabel.padding.top).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: Constants.NameLabel.padding.left).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.NameLabel.padding.right).isActive = true
-        
+    }
+    
+    private func setupPhoneIconConstraints() {
         phoneIcon.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.PhoneIcon.padding.top).isActive = true
         phoneIcon.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         phoneIcon.widthAnchor.constraint(equalToConstant: Constants.PhoneIcon.dimensions).isActive = true
         phoneIcon.heightAnchor.constraint(equalToConstant: Constants.PhoneIcon.dimensions).isActive = true
-        
+    }
+    
+    private func setupPhoneLabelConstraints() {
         phoneLabel.topAnchor.constraint(equalTo: phoneIcon.topAnchor).isActive = true
         phoneLabel.leadingAnchor.constraint(equalTo: phoneIcon.trailingAnchor, constant: Constants.PhoneLabel.padding.left).isActive = true
         phoneLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.PhoneLabel.padding.right).isActive = true
-        
+    }
+    
+    private func setupEmailIconConstraints() {
         emailIcon.topAnchor.constraint(equalTo: phoneIcon.bottomAnchor, constant: Constants.EmailIcon.padding.top).isActive = true
         emailIcon.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         emailIcon.widthAnchor.constraint(equalToConstant: Constants.EmailIcon.dimensions).isActive = true
         emailIcon.heightAnchor.constraint(equalToConstant: Constants.EmailIcon.dimensions).isActive = true
-        
+    }
+    
+    private func setupEmailLabelConstraints() {
         emailLabel.topAnchor.constraint(equalTo: emailIcon.topAnchor).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: emailIcon.trailingAnchor, constant: Constants.EmailLabel.padding.left).isActive = true
         emailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.EmailLabel.padding.right).isActive = true
-        
+    }
+    
+    private func setupPublicationsButtonConstraints() {
         publicationsButton.topAnchor.constraint(equalTo: emailIcon.bottomAnchor, constant: Constants.PublicationsButton.padding.top).isActive = true
         publicationsButton.leadingAnchor.constraint(equalTo: emailIcon.leadingAnchor).isActive = true
         publicationsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.PublicationsButton.padding.bottom).isActive = true

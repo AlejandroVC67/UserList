@@ -44,7 +44,6 @@ class PublicationTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    
     func setupView(post: PostModel) {
         titleLabel.text = post.title
         bodyLabel.text = post.body

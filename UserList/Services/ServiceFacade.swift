@@ -42,7 +42,7 @@ final class ServiceFacade: ServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get
         
-        let task = URLSession.shared.dataTask(with: request) {[weak self] (data, _, _) in
+        let task = URLSession.shared.dataTask(with: request) { (data, _, _) in
             guard let data = data else {
                 completion(.failure(.dataError))
                 return
