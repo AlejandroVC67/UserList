@@ -21,6 +21,7 @@ final class UserListViewModel: NSObject {
     private var cachedUsers: [User] = [] {
         didSet {
             displayedUsers = cachedUsers
+            delegate?.reload()
         }
     }
     private var displayedUsers: [User] = []
@@ -47,8 +48,7 @@ final class UserListViewModel: NSObject {
             switch result {
             case .success(let users):
                 self.cachedUsers = users
-                self.delegate?.reload()
-            case .failure(let error): print("error")
+            case .failure(let error): print("error description: ", error.errorDescription)
                 
             }
             self.delegate?.stopActivityIndicator()

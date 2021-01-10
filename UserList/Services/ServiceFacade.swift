@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 final class ServiceFacade: ServiceProtocol {
     private enum Constants {
@@ -19,12 +20,21 @@ final class ServiceFacade: ServiceProtocol {
     }
   
     func getUsers(completion: @escaping UsersServiceResponse) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let context = appDelegate?.persistentContainer.viewContext
+        
+        // First we try to get users from cache
+        let cachedUsers = CacheManager.retrieve(from: context)
+        if !cachedUsers.isEmpty {
+            completion(.success(cachedUsers))
+            return
+        }
+        
+        // If we don't have any stored data, we must consume the service
         guard let url  = URL(string: Constants.url + "/users") else {
             completion(.failure(.badUrl))
             return
         }
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        let context = appDelegate?.persistentContainer.viewContext
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get

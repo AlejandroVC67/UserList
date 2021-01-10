@@ -23,14 +23,13 @@ final class CacheManager {
         }
         deleteAllData(context: context)
         
-        let _ : [User] = users.map {
+        users.forEach {
             let user = User(entity: entity, insertInto: context)
             user.id = $0.id
             user.name = $0.name
             user.username = $0.username
             user.email = $0.email
             user.phone = $0.phone
-            return user
         }
         
         do {
