@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		163B16A825AB58C80053C55F /* UserPublicationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16A725AB58C80053C55F /* UserPublicationsTableViewController.swift */; };
-		163B16B025AB59940053C55F /* UserPubiicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16AF25AB59940053C55F /* UserPubiicationViewModel.swift */; };
+		163B16B025AB59940053C55F /* UserPublicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16AF25AB59940053C55F /* UserPublicationViewModel.swift */; };
 		163B16B525AB67920053C55F /* PublicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16B425AB67920053C55F /* PublicationTableViewCell.swift */; };
 		163B16BA25AB67B90053C55F /* UserList+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16B925AB67B90053C55F /* UserList+UITableViewCell.swift */; };
 		163B16C725AB78060053C55F /* UserListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16C625AB78060053C55F /* UserListViewModelTests.swift */; };
 		163B16D025AB84320053C55F /* ServiceFacadeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16CF25AB84320053C55F /* ServiceFacadeMock.swift */; };
 		163B16D925AB857F0053C55F /* UserPostsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 163B16D725AB857F0053C55F /* UserPostsMock.json */; };
 		163B16DA25AB857F0053C55F /* UsersMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 163B16D825AB857F0053C55F /* UsersMock.json */; };
+		163B16EC25AB96760053C55F /* UserPubiicationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16EB25AB96760053C55F /* UserPubiicationViewModelTests.swift */; };
 		16C4F10625AA072100ECBF44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10525AA072100ECBF44 /* AppDelegate.swift */; };
 		16C4F10825AA072100ECBF44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10725AA072100ECBF44 /* SceneDelegate.swift */; };
 		16C4F10A25AA072100ECBF44 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10925AA072100ECBF44 /* UserListViewController.swift */; };
@@ -53,13 +54,14 @@
 
 /* Begin PBXFileReference section */
 		163B16A725AB58C80053C55F /* UserPublicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPublicationsTableViewController.swift; sourceTree = "<group>"; };
-		163B16AF25AB59940053C55F /* UserPubiicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPubiicationViewModel.swift; sourceTree = "<group>"; };
+		163B16AF25AB59940053C55F /* UserPublicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPublicationViewModel.swift; sourceTree = "<group>"; };
 		163B16B425AB67920053C55F /* PublicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationTableViewCell.swift; sourceTree = "<group>"; };
 		163B16B925AB67B90053C55F /* UserList+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserList+UITableViewCell.swift"; sourceTree = "<group>"; };
 		163B16C625AB78060053C55F /* UserListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModelTests.swift; sourceTree = "<group>"; };
 		163B16CF25AB84320053C55F /* ServiceFacadeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFacadeMock.swift; sourceTree = "<group>"; };
 		163B16D725AB857F0053C55F /* UserPostsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserPostsMock.json; sourceTree = "<group>"; };
 		163B16D825AB857F0053C55F /* UsersMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersMock.json; sourceTree = "<group>"; };
+		163B16EB25AB96760053C55F /* UserPubiicationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPubiicationViewModelTests.swift; sourceTree = "<group>"; };
 		16C4F10225AA072100ECBF44 /* UserList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C4F10525AA072100ECBF44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C4F10725AA072100ECBF44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				163B16A725AB58C80053C55F /* UserPublicationsTableViewController.swift */,
-				163B16AF25AB59940053C55F /* UserPubiicationViewModel.swift */,
+				163B16AF25AB59940053C55F /* UserPublicationViewModel.swift */,
 				163B16B425AB67920053C55F /* PublicationTableViewCell.swift */,
 			);
 			path = UserPublications;
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				163B16C625AB78060053C55F /* UserListViewModelTests.swift */,
+				163B16EB25AB96760053C55F /* UserPubiicationViewModelTests.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -391,7 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C84B5725AA749E00A60CD0 /* CacheManager.swift in Sources */,
-				163B16B025AB59940053C55F /* UserPubiicationViewModel.swift in Sources */,
+				163B16B025AB59940053C55F /* UserPublicationViewModel.swift in Sources */,
 				16C4F11025AA072100ECBF44 /* UserList.xcdatamodeld in Sources */,
 				16C4F14325AA077E00ECBF44 /* PostModel.swift in Sources */,
 				163B16A825AB58C80053C55F /* UserPublicationsTableViewController.swift in Sources */,
@@ -417,6 +420,7 @@
 				163B16D025AB84320053C55F /* ServiceFacadeMock.swift in Sources */,
 				16C4F12025AA072400ECBF44 /* UserListTests.swift in Sources */,
 				163B16C725AB78060053C55F /* UserListViewModelTests.swift in Sources */,
+				163B16EC25AB96760053C55F /* UserPubiicationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

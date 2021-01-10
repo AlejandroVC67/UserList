@@ -9,9 +9,9 @@ import UIKit
 
 final class UserPublicationsTableViewController: UITableViewController {
 
-    private var viewModel: UserPubiicationViewModel
+    private var viewModel: UserPublicationViewModel
     
-    init(viewModel: UserPubiicationViewModel) {
+    init(viewModel: UserPublicationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

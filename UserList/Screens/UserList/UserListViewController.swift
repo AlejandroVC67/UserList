@@ -119,7 +119,7 @@ extension UserListViewController: UserListDelegate {
     func handleTap(user: UserModel?) {
         guard let user = user else { return }
         
-        let viewModel = UserPubiicationViewModel(user: user)
+        let viewModel = UserPublicationViewModel(user: user, service: ServiceFacade())
         let controller = UserPublicationsTableViewController(viewModel: viewModel)
         navigationController?.pushViewController(controller, animated: true)
     }

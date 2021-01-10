@@ -13,7 +13,7 @@ class UserListViewModelTests: XCTestCase {
     private enum ExpectedResults {
         static let username = "Leanne Graham"
         static let userId = 1
-        static let user = "Sincere@april.biz"
+        static let email = "Sincere@april.biz"
         static let phone = "1-770-736-8031 x56442"
     }
     
@@ -41,5 +41,26 @@ class UserListViewModelTests: XCTestCase {
         
         // Then
         XCTAssertEqual(viewModel.displayedUsers.count, 10, "There are 10 users cached")
+    }
+    
+    func testUserData() {
+        // Given
+        let serviceMock = ServiceFacadeMock()
+        let viewModel = UserListViewModel(service: serviceMock)
+        viewModel.fetchUsers()
+        
+        // When
+        viewModel.filterUser(by: ExpectedResults.username)
+        
+        // Then
+        guard let user = viewModel.displayedUsers.first else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertEqual(user.id, ExpectedResults.userId, "The id should be \(ExpectedResults.userId)")
+        XCTAssertEqual(user.name, ExpectedResults.username, "The name should be \(ExpectedResults.username)")
+        XCTAssertEqual(user.phone, ExpectedResults.phone, "The phone should be \(ExpectedResults.phone)")
+        XCTAssertEqual(user.email, ExpectedResults.email, "The email should be \(ExpectedResults.email)")
     }
 }
