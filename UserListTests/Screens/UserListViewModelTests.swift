@@ -27,7 +27,7 @@ class UserListViewModelTests: XCTestCase {
         viewModel.filterUser(by: ExpectedResults.username)
         
         // Then
-        XCTAssertEqual(viewModel.displayedUsers.count, 1, "There is only one user that fulfills that filter")
+        XCTAssertEqual(viewModel.users.count, 1, "There is only one user that fulfills that filter")
     }
     
     func testFilterUser_givenNoInput_shouldReturnOneMatch() {
@@ -40,7 +40,7 @@ class UserListViewModelTests: XCTestCase {
         viewModel.filterUser(by: "")
         
         // Then
-        XCTAssertEqual(viewModel.displayedUsers.count, 10, "There are 10 users cached")
+        XCTAssertEqual(viewModel.users.count, 10, "There are 10 users cached")
     }
     
     func testUserData() {
@@ -53,7 +53,7 @@ class UserListViewModelTests: XCTestCase {
         viewModel.filterUser(by: ExpectedResults.username)
         
         // Then
-        guard let user = viewModel.displayedUsers.first else {
+        guard let user = viewModel.users.first else {
             XCTFail()
             return
         }

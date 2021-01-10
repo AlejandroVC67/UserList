@@ -18,13 +18,11 @@ protocol UserListDelegate where Self: UIViewController {
 
 final class UserListViewModel: NSObject {
 
-    private var cachedUsers: [UserModel] = [] {
+    private(set) var users: [UserModel] = [] {
         didSet {
-            displayedUsers = cachedUsers
             delegate?.reload()
         }
     }
-    private(set) var displayedUsers: [UserModel] = []
     private let serviceHandler: ServiceProtocol
     weak var delegate: UserListDelegate?
     
@@ -33,18 +31,7 @@ final class UserListViewModel: NSObject {
     }
     
     func filterUser(by string: String) {
-        // TODO: Finish coredata implementation, always returning empty array.
-        let predicate = NSPredicate(format: "name CONTAINS '%@'", string)
-        let matchingUsers = CacheManager.retrieveBasedOn(predicate: predicate)
-        
-        if string.isEmpty {
-            displayedUsers = cachedUsers
-            delegate?.reload()
-            return
-        }
-        
-        displayedUsers = cachedUsers.filter({ $0.name.contains(string) })
-        delegate?.reload()
+        users = CacheManager.retrieveBasedOn(string: string)
     }
     
     func fetchUsers() {
@@ -53,7 +40,7 @@ final class UserListViewModel: NSObject {
             self.delegate?.startActivityIndicator()
             switch result {
             case .success(let users):
-                self.cachedUsers = users
+                self.users = users
             case .failure(let error): print("error description: ", error.errorDescription as Any)
                 
             }
@@ -62,13 +49,13 @@ final class UserListViewModel: NSObject {
     }
     
     private func getUser(pos: Int) -> UserModel {
-        return displayedUsers[pos]
+        return users[pos]
     }
 }
 
 extension UserListViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayedUsers.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

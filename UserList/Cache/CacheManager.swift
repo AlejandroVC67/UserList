@@ -55,14 +55,14 @@ final class CacheManager {
         return cachedUsers
     }
     
-    static func retrieveBasedOn(predicate: NSPredicate) -> [UserModel] {
+    static func retrieveBasedOn(string: String) -> [UserModel] {
         var filteredUsers: [UserModel] = []
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         guard let context = appDelegate?.persistentContainer.viewContext else { return filteredUsers }
         
         let request = NSFetchRequest<NSManagedObject>(entityName: Constants.entityName)
-        request.predicate = predicate
+        request.predicate = string.isEmpty ? nil : NSPredicate(format: "name CONTAINS %@", string)
         
         do {
             let cachedUsers = try context.fetch(request) as? [User] ?? []
