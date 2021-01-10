@@ -17,16 +17,29 @@ class UserListViewModelTests: XCTestCase {
         static let phone = "1-770-736-8031 x56442"
     }
     
-    func testSomething() {
+    func testFilterUser_givenUsername_shouldReturnOneMatch() {
         // Given
         let serviceMock = ServiceFacadeMock()
         let viewModel = UserListViewModel(service: serviceMock)
         viewModel.fetchUsers()
         
         // When
-        viewModel.filterUser(by: "Leanne")
+        viewModel.filterUser(by: ExpectedResults.username)
         
         // Then
         XCTAssertEqual(viewModel.displayedUsers.count, 1, "There is only one user that fulfills that filter")
+    }
+    
+    func testFilterUser_givenNoInput_shouldReturnOneMatch() {
+        // Given
+        let serviceMock = ServiceFacadeMock()
+        let viewModel = UserListViewModel(service: serviceMock)
+        viewModel.fetchUsers()
+        
+        // When
+        viewModel.filterUser(by: "")
+        
+        // Then
+        XCTAssertEqual(viewModel.displayedUsers.count, 10, "There are 10 users cached")
     }
 }
