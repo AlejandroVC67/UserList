@@ -40,9 +40,9 @@ final class CacheManager {
     }
     
     static func retrieve(from context: NSManagedObjectContext?) -> [User] {
-        guard let context = context else { return [] }
-        
         var cachedUsers: [User] = []
+        
+        guard let context = context else { return cachedUsers }
     
         let request = NSFetchRequest<NSManagedObject>(entityName: Constants.entityName)
         
@@ -53,6 +53,24 @@ final class CacheManager {
         }
         
         return cachedUsers
+    }
+    
+    static func retrieveBasedOn(predicate: NSPredicate) -> [User] {
+        var filteredUsers: [User] = []
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        guard let context = appDelegate?.persistentContainer.viewContext else { return filteredUsers }
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: Constants.entityName)
+        request.predicate = predicate
+        
+        do {
+            filteredUsers = try context.fetch(request) as? [User] ?? []
+        } catch {
+            print("Error saving users", error.localizedDescription)
+        }
+        
+        return filteredUsers
     }
     
     static func deleteAllData(context: NSManagedObjectContext) {

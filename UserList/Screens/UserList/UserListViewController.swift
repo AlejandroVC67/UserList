@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserListViewController: UIViewController {
+final class UserListViewController: UIViewController {
 
     private var viewModel = UserListViewModel()
     
@@ -114,6 +114,14 @@ extension UserListViewController: UserListDelegate {
             self?.tableView.reloadData()
             
         }
+    }
+    
+    func handleTap(user: User?) {
+        guard let user = user else { return }
+        
+        let viewModel = UserPubiicationViewModel(user: user)
+        let controller = UserPublicationsTableViewController(viewModel: viewModel)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

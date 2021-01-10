@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163B16A825AB58C80053C55F /* UserPublicationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16A725AB58C80053C55F /* UserPublicationsTableViewController.swift */; };
+		163B16B025AB59940053C55F /* UserPubiicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16AF25AB59940053C55F /* UserPubiicationViewModel.swift */; };
+		163B16B525AB67920053C55F /* PublicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16B425AB67920053C55F /* PublicationTableViewCell.swift */; };
+		163B16BA25AB67B90053C55F /* UserList+UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16B925AB67B90053C55F /* UserList+UITableViewCell.swift */; };
 		16C4F10625AA072100ECBF44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10525AA072100ECBF44 /* AppDelegate.swift */; };
 		16C4F10825AA072100ECBF44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10725AA072100ECBF44 /* SceneDelegate.swift */; };
 		16C4F10A25AA072100ECBF44 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10925AA072100ECBF44 /* UserListViewController.swift */; };
@@ -44,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		163B16A725AB58C80053C55F /* UserPublicationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPublicationsTableViewController.swift; sourceTree = "<group>"; };
+		163B16AF25AB59940053C55F /* UserPubiicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPubiicationViewModel.swift; sourceTree = "<group>"; };
+		163B16B425AB67920053C55F /* PublicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationTableViewCell.swift; sourceTree = "<group>"; };
+		163B16B925AB67B90053C55F /* UserList+UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserList+UITableViewCell.swift"; sourceTree = "<group>"; };
 		16C4F10225AA072100ECBF44 /* UserList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C4F10525AA072100ECBF44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C4F10725AA072100ECBF44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +102,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163B16A625AB57B40053C55F /* UserPublications */ = {
+			isa = PBXGroup;
+			children = (
+				163B16A725AB58C80053C55F /* UserPublicationsTableViewController.swift */,
+				163B16AF25AB59940053C55F /* UserPubiicationViewModel.swift */,
+				163B16B425AB67920053C55F /* PublicationTableViewCell.swift */,
+			);
+			path = UserPublications;
+			sourceTree = "<group>";
+		};
+		163B16BE25AB67C10053C55F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				163B16B925AB67B90053C55F /* UserList+UITableViewCell.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		16C4F0F925AA072100ECBF44 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +143,7 @@
 		16C4F10425AA072100ECBF44 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				163B16BE25AB67C10053C55F /* Utils */,
 				16C84B4D25AA71FB00A60CD0 /* Cache */,
 				16C4F15A25AA088D00ECBF44 /* Screens */,
 				16C4F14725AA07A800ECBF44 /* Services */,
@@ -179,6 +206,7 @@
 		16C4F15A25AA088D00ECBF44 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				163B16A625AB57B40053C55F /* UserPublications */,
 				16C4F16825AA13C200ECBF44 /* UserList */,
 			);
 			path = Screens;
@@ -333,11 +361,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				16C84B5725AA749E00A60CD0 /* CacheManager.swift in Sources */,
+				163B16B025AB59940053C55F /* UserPubiicationViewModel.swift in Sources */,
 				16C4F11025AA072100ECBF44 /* UserList.xcdatamodeld in Sources */,
 				16C4F14325AA077E00ECBF44 /* PostModel.swift in Sources */,
+				163B16A825AB58C80053C55F /* UserPublicationsTableViewController.swift in Sources */,
 				16C4F17225AA16D700ECBF44 /* UserTableViewCell.swift in Sources */,
+				163B16B525AB67920053C55F /* PublicationTableViewCell.swift in Sources */,
 				16C4F10A25AA072100ECBF44 /* UserListViewController.swift in Sources */,
 				16C4F15125AA07E100ECBF44 /* ServiceProtocol.swift in Sources */,
+				163B16BA25AB67B90053C55F /* UserList+UITableViewCell.swift in Sources */,
 				16C4F15625AA07F500ECBF44 /* ServiceFacade.swift in Sources */,
 				16C4F10625AA072100ECBF44 /* AppDelegate.swift in Sources */,
 				16C4F13E25AA076700ECBF44 /* UserModel.swift in Sources */,

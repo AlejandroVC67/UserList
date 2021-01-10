@@ -11,7 +11,9 @@ import CoreData
 
 final class ServiceFacade: ServiceProtocol {
     private enum Constants {
-        static let url = "https://jsonplaceholder.typicode.com"
+        static let baseUrl = "https://jsonplaceholder.typicode.com"
+        static let users = "/users"
+        static let posts = "/posts?userId="
     }
     
     private enum HTTPMethods {
@@ -31,7 +33,7 @@ final class ServiceFacade: ServiceProtocol {
         }
         
         // If we don't have any stored data, we must consume the service
-        guard let url  = URL(string: Constants.url + "/users") else {
+        guard let url = URL(string: Constants.baseUrl + Constants.users) else {
             completion(.failure(.badUrl))
             return
         }
@@ -57,7 +59,31 @@ final class ServiceFacade: ServiceProtocol {
         task.resume()
     }
     
-    func getPosts(completion: @escaping PostsServiceResponse) {
-        completion(.failure(.badUrl))
+    func getPosts(userId: String, completion: @escaping PostsServiceResponse) {
+        let urlPath = Constants.baseUrl + Constants.posts + userId
+        
+        guard let url = URL(string: urlPath) else {
+            completion(.failure(.badUrl))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethods.get
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, _, _) in
+            guard let data = data else {
+                completion(.failure(.dataError))
+                return
+            }
+            do {
+                let posts = try JSONDecoder().decode([PostModel].self, from: data)
+                completion(.success(posts))
+            } catch {
+                print(error)
+                completion(.failure(.unableToParse))
+            }
+        }
+        task.resume()
     }
 }

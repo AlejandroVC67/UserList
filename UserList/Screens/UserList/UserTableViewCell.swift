@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
+final class UserTableViewCell: UITableViewCell {
 
     private enum Constants {
         enum NameTitleLabel {
@@ -88,7 +88,8 @@ class UserTableViewCell: UITableViewCell {
         return label
     }()
     
-    static let reuseIdentifier = String(describing: type(of: self))
+    weak var delegate: UserListDelegate?
+    private var user: User?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -96,15 +97,22 @@ class UserTableViewCell: UITableViewCell {
     
     func setupView(with user: User) {
         // Set labels
-        nameLabel.text = user.name
-        phoneLabel.text = user.phone
-        emailLabel.text = user.email.lowercased()
+        self.user = user
+        nameLabel.text = self.user?.name
+        phoneLabel.text = self.user?.phone
+        emailLabel.text = self.user?.email.lowercased()
         // Setup Constraints
         setupConstraints()
+        // Create tap
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        addGestureRecognizer(tap)
+    }
+    
+    @objc private func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        delegate?.handleTap(user: user)
     }
     
     private func setupConstraints() {
-        
         addSubview(profileImageView)
         addSubview(nameLabel)
         addSubview(phoneIcon)

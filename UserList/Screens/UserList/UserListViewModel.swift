@@ -13,7 +13,7 @@ protocol UserListDelegate where Self: UIViewController {
     func startActivityIndicator()
     func stopActivityIndicator()
     func reload()
-    
+    func handleTap(user: User?)
 }
 
 final class UserListViewModel: NSObject {
@@ -29,15 +29,17 @@ final class UserListViewModel: NSObject {
     weak var delegate: UserListDelegate?
     
     func filterUser(by string: String) {
-//        let predicate = NSPredicate(format: "name = %@", string)
+        // TODO: Finish coredata implementation, always returning empty array.
+        let predicate = NSPredicate(format: "name CONTAINS '%@'", string)
+        let matchingUsers = CacheManager.retrieveBasedOn(predicate: predicate)
+        
         if string.isEmpty {
             displayedUsers = cachedUsers
             delegate?.reload()
             return
         }
+        
         displayedUsers = cachedUsers.filter({ $0.name.contains(string) })
-//        let nsUsers = users as? NSArray
-//        self.users = nsUsers?.filtered(using: predicate) as? [UserModel] ?? []
         delegate?.reload()
     }
     
@@ -48,7 +50,7 @@ final class UserListViewModel: NSObject {
             switch result {
             case .success(let users):
                 self.cachedUsers = users
-            case .failure(let error): print("error description: ", error.errorDescription)
+            case .failure(let error): print("error description: ", error.errorDescription as Any)
                 
             }
             self.delegate?.stopActivityIndicator()
@@ -67,6 +69,7 @@ extension UserListViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UserTableViewCell()
+        cell.delegate = delegate
         let user = getUser(pos: indexPath.row)
         cell.setupView(with: user)
         return cell

@@ -12,6 +12,6 @@ typealias PostsServiceResponse = (Result<[PostModel], ServiceError>) -> Void
 
 protocol ServiceProtocol {
     func getUsers(completion: @escaping UsersServiceResponse)
-    func getPosts(completion: @escaping PostsServiceResponse)
+    func getPosts(userId: String, completion: @escaping PostsServiceResponse)
 }
 
