@@ -13,20 +13,24 @@ protocol UserListDelegate where Self: UIViewController {
     func startActivityIndicator()
     func stopActivityIndicator()
     func reload()
-    func handleTap(user: User?)
+    func handleTap(user: UserModel?)
 }
 
 final class UserListViewModel: NSObject {
 
-    private var cachedUsers: [User] = [] {
+    private var cachedUsers: [UserModel] = [] {
         didSet {
             displayedUsers = cachedUsers
             delegate?.reload()
         }
     }
-    private var displayedUsers: [User] = []
-    private let serviceHandler: ServiceProtocol = ServiceFacade()
+    private(set) var displayedUsers: [UserModel] = []
+    private let serviceHandler: ServiceProtocol
     weak var delegate: UserListDelegate?
+    
+    init(service: ServiceProtocol) {
+        self.serviceHandler = service
+    }
     
     func filterUser(by string: String) {
         // TODO: Finish coredata implementation, always returning empty array.
@@ -57,7 +61,7 @@ final class UserListViewModel: NSObject {
         }
     }
     
-    private func getUser(pos: Int) -> User {
+    private func getUser(pos: Int) -> UserModel {
         return displayedUsers[pos]
     }
 }

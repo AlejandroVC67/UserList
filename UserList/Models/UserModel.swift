@@ -13,5 +13,4 @@ struct UserModel: Codable {
     let username: String
     let email: String
     let phone: String
-    let posts: [PostModel]?
 }

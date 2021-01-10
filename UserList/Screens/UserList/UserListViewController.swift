@@ -9,7 +9,7 @@ import UIKit
 
 final class UserListViewController: UIViewController {
 
-    private var viewModel = UserListViewModel()
+    private var viewModel = UserListViewModel(service: ServiceFacade())
     
     private enum Constants {
         enum NavBar {
@@ -116,7 +116,7 @@ extension UserListViewController: UserListDelegate {
         }
     }
     
-    func handleTap(user: User?) {
+    func handleTap(user: UserModel?) {
         guard let user = user else { return }
         
         let viewModel = UserPubiicationViewModel(user: user)

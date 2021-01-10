@@ -28,7 +28,8 @@ final class ServiceFacade: ServiceProtocol {
         // First we try to get users from cache
         let cachedUsers = CacheManager.retrieve(from: context)
         if !cachedUsers.isEmpty {
-            completion(.success(cachedUsers))
+            let result = prepareData(users: cachedUsers)
+            completion(.success(result))
             return
         }
         
@@ -41,7 +42,7 @@ final class ServiceFacade: ServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethods.get
         
-        let task = URLSession.shared.dataTask(with: request) { (data, _, _) in
+        let task = URLSession.shared.dataTask(with: request) {[weak self] (data, _, _) in
             guard let data = data else {
                 completion(.failure(.dataError))
                 return
@@ -50,7 +51,8 @@ final class ServiceFacade: ServiceProtocol {
                 let users = try JSONDecoder().decode([UserModel].self, from: data)
                 CacheManager.save(users: users, context: context)
                 let cachedUsers = CacheManager.retrieve(from: context)
-                completion(.success(cachedUsers))
+                let result = self?.prepareData(users: cachedUsers) ?? []
+                completion(.success(result))
             } catch {
                 print(error)
                 completion(.failure(.unableToParse))
@@ -85,5 +87,16 @@ final class ServiceFacade: ServiceProtocol {
             }
         }
         task.resume()
+    }
+    
+    private func prepareData(users: [User]) -> [UserModel] {
+        let result = users.map { (person) -> UserModel in
+            return UserModel(id: person.id,
+                             name: person.name,
+                             username: person.username,
+                             email: person.email,
+                             phone: person.phone)
+        }
+        return result
     }
 }

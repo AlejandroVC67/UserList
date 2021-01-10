@@ -13,7 +13,7 @@ protocol UserPublicationDelegate: UITableViewController {
 }
 
 final class UserPubiicationViewModel: NSObject {
-    private let user: User
+    private let user: UserModel
     private let serviceHandler: ServiceProtocol = ServiceFacade()
     private var publications: [PostModel] = [] {
         didSet {
@@ -22,7 +22,7 @@ final class UserPubiicationViewModel: NSObject {
     }
     var delegate: UserPublicationDelegate?
     
-    init(user: User) {
+    init(user: UserModel) {
         self.user = user
     }
     

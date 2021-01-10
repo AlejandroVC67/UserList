@@ -45,6 +45,12 @@ final class UserTableViewCell: UITableViewCell {
         enum EmailLabel {
             static let padding: UIEdgeInsets = .init(top: 0, left: 4, bottom: -20, right: -8)
         }
+        
+        enum PublicationsButton {
+            static let padding: UIEdgeInsets = .init(top: 20, left: 0, bottom: -20, right: 0)
+            static let text = "See Posts"
+            static let image = UIImage(systemName: "doc.text.fill")
+        }
     }
     
     private lazy var profileImageView: UIImageView = {
@@ -88,14 +94,23 @@ final class UserTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var publicationsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Constants.PublicationsButton.text, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.blue, for: .normal)
+        button.setImage(Constants.PublicationsButton.image, for: .normal)
+        return button
+    }()
+    
     weak var delegate: UserListDelegate?
-    private var user: User?
+    private var user: UserModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func setupView(with user: User) {
+    func setupView(with user: UserModel) {
         // Set labels
         self.user = user
         nameLabel.text = self.user?.name
@@ -119,6 +134,7 @@ final class UserTableViewCell: UITableViewCell {
         addSubview(phoneLabel)
         addSubview(emailIcon)
         addSubview(emailLabel)
+        addSubview(publicationsButton)
         
         profileImageView.widthAnchor.constraint(equalToConstant: Constants.ProfileImage.dimensions).isActive = true
         profileImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.ProfileImage.padding.top).isActive = true
@@ -148,7 +164,10 @@ final class UserTableViewCell: UITableViewCell {
         emailLabel.topAnchor.constraint(equalTo: emailIcon.topAnchor).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: emailIcon.trailingAnchor, constant: Constants.EmailLabel.padding.left).isActive = true
         emailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Constants.EmailLabel.padding.right).isActive = true
-        emailLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.EmailLabel.padding.bottom).isActive = true
+        
+        publicationsButton.topAnchor.constraint(equalTo: emailIcon.bottomAnchor, constant: Constants.PublicationsButton.padding.top).isActive = true
+        publicationsButton.leadingAnchor.constraint(equalTo: emailIcon.leadingAnchor).isActive = true
+        publicationsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.PublicationsButton.padding.bottom).isActive = true
     }
     
 }

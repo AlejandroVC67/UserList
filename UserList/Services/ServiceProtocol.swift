@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias UsersServiceResponse = (Result<[User], ServiceError>) -> Void
+typealias UsersServiceResponse = (Result<[UserModel], ServiceError>) -> Void
 typealias PostsServiceResponse = (Result<[PostModel], ServiceError>) -> Void
 
 protocol ServiceProtocol {
