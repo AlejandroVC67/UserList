@@ -55,6 +55,8 @@ final class UserListViewController: UIViewController {
         return bar
     }()
     
+    private var errorView: UserListEmptyView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
@@ -122,6 +124,34 @@ extension UserListViewController: UserListDelegate {
         let viewModel = UserPublicationViewModel(user: user, service: ServiceFacade())
         let controller = UserPublicationsTableViewController(viewModel: viewModel)
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func showError() {
+        guard errorView == nil else {
+            return
+        }
+        
+        let view = UserListEmptyView()
+        view.setupView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        errorView = view
+        guard let errorView = errorView else {
+            return
+        }
+        self.view.addSubview(errorView)
+        
+        view.topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
+        view.leadingAnchor.constraint(equalTo: tableView.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: tableView.trailingAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+    }
+    
+    func dismissError() {
+        if errorView != nil {
+            errorView?.removeFromSuperview()
+            errorView = nil
+        }
     }
 }
 

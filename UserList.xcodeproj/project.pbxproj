@@ -16,6 +16,7 @@
 		163B16D925AB857F0053C55F /* UserPostsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 163B16D725AB857F0053C55F /* UserPostsMock.json */; };
 		163B16DA25AB857F0053C55F /* UsersMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 163B16D825AB857F0053C55F /* UsersMock.json */; };
 		163B16EC25AB96760053C55F /* UserPubiicationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16EB25AB96760053C55F /* UserPubiicationViewModelTests.swift */; };
+		163B16FC25ABA9E70053C55F /* UserListEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B16FB25ABA9E70053C55F /* UserListEmptyView.swift */; };
 		16C4F10625AA072100ECBF44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10525AA072100ECBF44 /* AppDelegate.swift */; };
 		16C4F10825AA072100ECBF44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10725AA072100ECBF44 /* SceneDelegate.swift */; };
 		16C4F10A25AA072100ECBF44 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F10925AA072100ECBF44 /* UserListViewController.swift */; };
@@ -62,6 +63,7 @@
 		163B16D725AB857F0053C55F /* UserPostsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserPostsMock.json; sourceTree = "<group>"; };
 		163B16D825AB857F0053C55F /* UsersMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UsersMock.json; sourceTree = "<group>"; };
 		163B16EB25AB96760053C55F /* UserPubiicationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPubiicationViewModelTests.swift; sourceTree = "<group>"; };
+		163B16FB25ABA9E70053C55F /* UserListEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListEmptyView.swift; sourceTree = "<group>"; };
 		16C4F10225AA072100ECBF44 /* UserList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C4F10525AA072100ECBF44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C4F10725AA072100ECBF44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				163B16A625AB57B40053C55F /* UserPublications */,
 				16C4F16825AA13C200ECBF44 /* UserList */,
+				163B16FB25ABA9E70053C55F /* UserListEmptyView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				16C4F11025AA072100ECBF44 /* UserList.xcdatamodeld in Sources */,
 				16C4F14325AA077E00ECBF44 /* PostModel.swift in Sources */,
 				163B16A825AB58C80053C55F /* UserPublicationsTableViewController.swift in Sources */,
+				163B16FC25ABA9E70053C55F /* UserListEmptyView.swift in Sources */,
 				16C4F17225AA16D700ECBF44 /* UserTableViewCell.swift in Sources */,
 				163B16B525AB67920053C55F /* PublicationTableViewCell.swift in Sources */,
 				16C4F10A25AA072100ECBF44 /* UserListViewController.swift in Sources */,

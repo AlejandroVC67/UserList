@@ -14,6 +14,8 @@ protocol UserListDelegate where Self: UIViewController {
     func stopActivityIndicator()
     func reload()
     func handleTap(user: UserModel?)
+    func showError()
+    func dismissError()
 }
 
 final class UserListViewModel: NSObject {
@@ -21,6 +23,7 @@ final class UserListViewModel: NSObject {
     private(set) var users: [UserModel] = [] {
         didSet {
             delegate?.reload()
+            users.isEmpty ? delegate?.showError() : delegate?.dismissError()
         }
     }
     private let serviceHandler: ServiceProtocol
